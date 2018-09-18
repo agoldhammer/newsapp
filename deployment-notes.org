@@ -1,0 +1,30 @@
+* get instance, keys, dns, etc setup
+* check codebase uptodate
+* check twdb sdist is uptodate
+* build image
+* scp mongo and usnews images to host
+* install docker on host
+* start mongo image as dbhost with -p7070:27017 link to host
+* backup database from swann
+* scp db archive to host
+* docker cp db archive to mongo container running as dbhost
+* restore db from archive
+* start usnews image as usweb with link to db
+* if necessary, run maketopics on topics.txt
+* Warning about accessing db before fork
+# Each process creates its own instance of MongoClient.
+def func():
+    db = pymongo.MongoClient().mydb
+    # Do something with db.
+
+proc = multiprocessing.Process(target=func)
+proc.start()
+https://api.mongodb.com/python/current/faq.html#multiprocessino
+
+* startup
+
+docker run -p7070:27017 --name dbhost -d usdb:11012018
+docker run -d --rm --link dbhost -p 80:80 --name usweb usnews
+
+* logging
+https://sandro-keil.de/blog/2015/03/11/logrotate-for-docker-container/

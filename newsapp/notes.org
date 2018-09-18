@@ -1,0 +1,36 @@
+* stopping apache
+**
+
+With systemd we can now use systemctl commands to prevent a service from automatically starting at boot.
+
+here is an example:
+
+sudo systemctl disable apache2
+
+You will still be able to start and stop the service but it won't start up at boot.
+https://askubuntu.com/questions/170640/how-to-disable-apache2-server-from-auto-starting-on-boot
+
+* fix favicons
+* remove expand option
+* configuration
+** https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-16-04
+** deployment
+*** put usnews.service file in /etc/systemd/system with perms 755
+*** put usnews.ini in top usnews dir
+*** put usnews-nginx-site config in /etc/nginx/sites-available and symlink from
+sites-enabled
+*** put wsgi.py file in top usnews dir
+*** whole shebang uses the anaconda3 virtual env twdb
+*** create /var/log/uwsgi with user owner and group
+*** server root site should have user owner and www-data group
+* containerization
+** logging?
+** give warning when no query
+* Web client dev in python with Brython
+* db backup and restore on docker
+
+𝒜𝑔𝓂𝒶𝓇𝒹𝑜𝓇 - 𝒶 𝓃𝑒𝓌𝓈 𝒶𝑔𝑔𝓇𝑒𝑔𝒶𝓉𝑜𝓇
+
+* ip address for bridge rather than actual source in nginx log
+
+https://github.com/moby/moby/issues/15086

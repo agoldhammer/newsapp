@@ -1,0 +1,5 @@
+.git
+.envrc
+.cache
+__pycache__/
+
