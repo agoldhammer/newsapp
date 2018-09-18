@@ -13,4 +13,4 @@ RUN ln -s /app/usnews/static /app/static
 
 WORKDIR=/app
 
-RUN pip3 install /app/newsapp
+RUN python3 setup.py install
