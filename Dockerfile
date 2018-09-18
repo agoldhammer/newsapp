@@ -10,3 +10,7 @@ COPY ./app /app
 COPY ./newsapp /app/newsapp
 
 RUN ln -s /app/usnews/static /app/static
+
+WORKDIR=/app
+
+RUN pip3 install /app/newsapp
