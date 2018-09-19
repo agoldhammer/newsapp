@@ -215,8 +215,9 @@ def showNews(query):
 @app.route("/")
 def query():
     if request.method == "GET":
-        n, cats = getShortStats()
-        return render_template("query.html", n=n, cats=cats)
+        # n, cats = getShortStats()
+        # return render_template("query.html", n=n, cats=cats)
+        return render_template("index.html")
     else:
         return redirect("/error")
 

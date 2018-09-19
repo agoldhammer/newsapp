@@ -11,6 +11,6 @@ COPY ./newsapp /app/newsapp
 
 RUN ln -s /app/usnews/static /app/static
 
-WORKDIR=/app
+WORKDIR /app
 
 RUN python3 setup.py install
