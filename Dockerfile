@@ -1,4 +1,4 @@
-FROM artgoldhammer/utwdb:0918
+FROM artgoldhammer/utwdb:0920
 
 MAINTAINER art.goldhammer@gmail.com
 
@@ -14,3 +14,13 @@ RUN ln -s /app/usnews/static /app/static
 WORKDIR /app
 
 RUN python3 setup.py install
+
+RUN apk add supervisor
+
+RUN mkdir -p /etc/supervisor.d
+
+RUN ln -s /app/supervisor.ini /etc/supervisor.d/
+
+# DO NOT demonize supervisor so cntr stays up when run with -d option
+CMD ["supervisord", "-n"]
+
