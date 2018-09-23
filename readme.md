@@ -110,3 +110,21 @@ logname=myapp
 owner=mytwitterhandle
 slug=mylistname
 ```
+
+#### replacing container on website
+
+```
+buntu@ip-172-31-42-130:~$ NEWSTAG=0922 docker-compose -f cloud-multi.yaml down
+Stopping usnews ... done
+Stopping eunews ... done
+Stopping dbhost ... done
+Removing usnews ... done
+Removing eunews ... done
+Removing dbhost ... done
+Removing network ubuntu_default
+ubuntu@ip-172-31-42-130:~$ NEWSTAG=0923 docker-compose -f cloud-multi.yaml up -d
+Creating network "ubuntu_default" with the default driver
+Creating dbhost ... done
+Creating usnews ... done
+Creating eunews ... done
+```
