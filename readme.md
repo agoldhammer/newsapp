@@ -1,26 +1,43 @@
 # newsapp -- Twitter list accumulator
 
+## Frontend
+
+The frontend is a separate project, written in Clojurescript and designed as a single-page application.
+
 ## Backend
 
 The backend is a mongodb database in a Docker container.
 
 Currently using mongo 4.0.2-xenial image.
 
-## Frontend
+## Middleware
 
 The frontend consists of the Python app newsapp, which can be configured to work with different databases in the backend and to consume different Twitter lists. See [Configuration](#configuration).
 
 Newsapp is built on top of ```twdb2```, which handles all interfacing with the database. Newsapp is a Web service based on Flask.
 
-```twdb2``` installs several scripts used by newsapp.
+### Application details
 
-```readfeed``` processes the Twitter list feed specified in the configuration file.
+`twdb2` installs several scripts used by newsapp.
 
-```maketopics``` stores the topic list specified in ```xxtopics.txt```, where ```xx``` designates the appropriate topic file.
+`readfeed` processes the Twitter list feed specified in the configuration file.
 
-```storeauthtable``` stores the author list specified in ```xxauthors.txt```.
+`maketopics` stores the topic list specified in `xxtopics.txt`, where `xx` designates the appropriate topic file.
 
-## Configuration
+`storeauthtable` stores the author list specified in `xxauthors.txt`.
+
+#### Running on cloud host
+
+Remember to use the NEWSTAG env variable to specify the correct version
+of the containers.
+
+`NEWSTAG=<tag> docker-compose -f cloud-multi.yaml up -d`
+`NEWSTAG=<tag> docker-compose -f cloud-multi.yaml down`
+`NEWSTAG=<tag> docker-compose -f cloud-multi.yaml logs`
+
+#### Configuration
+
+Congiuration files *must* be located in the `app/confs` directory of `newsappp`.
 
 Here is a sample docker-compose config file:
 
